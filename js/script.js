@@ -3,6 +3,7 @@ var removeButton = document.querySelector(".employessData__remove");
 
 //Delate data
 function deleteRow(datatable) {
+    console.log(checkboxes);
     var confirmation = confirm('Are you sure?');
     if (confirmation == true) {
         var table = document.getElementById("datatable");
