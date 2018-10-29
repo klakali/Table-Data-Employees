@@ -1,5 +1,32 @@
 var checkboxes = document.querySelectorAll("input[name=toBeRemoved]");
 var removeButton = document.querySelector(".employessData__remove");
+removeButton.disabled = true;
+
+//Highlight 
+function checkboxStyle() {
+    var rowStyle = this.parentNode.parentNode;
+    if (this.checked == false) {
+        rowStyle.style.backgroundColor = "white";
+    }
+    if (this.checked) {
+        rowStyle.style.backgroundColor = "#ddd";
+
+    }
+}
+//Remove button disabled
+function countCheckboxes() {
+    var checkboxes = document.querySelectorAll("input[name=toBeRemoved]");
+    var count = 0;
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked === true) {
+            count++;
+            removeButton.disabled = false;
+        }
+    }
+    if (count === 0) {
+        removeButton.disabled = true;
+    }
+}
 
 //Delate data
 function deleteRow(datatable) {
@@ -17,35 +44,12 @@ function deleteRow(datatable) {
                 table.deleteRow(i);
                 rowCount--;
                 i--;
+                removeButton.disabled = true;
             }
         }
-    }
-}
-//Highlight 
-function checkboxStyle() {
-    var rowStyle = this.parentNode.parentNode;
-    if (this.checked == false) {
-        rowStyle.style.backgroundColor = "white";
-    }
-    if (this.checked) {
-        rowStyle.style.backgroundColor = "#ddd";
-        removeButton.disabled = false;
-
-    }
-}
-//Remove button disabled
-function countCheckboxes() {
-    var count = 0;
-    for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked === true) {
-            count++;
-            removeButton.disabled = false;
-        }
-    }
-    if (count === 0) {
-        removeButton.disabled = true;
     }
 }
 
 removeButton.addEventListener('click', deleteRow);
 checkboxes.forEach(checkbox => checkbox.addEventListener('change', countCheckboxes));
+checkboxes.forEach(checkbox => checkbox.addEventListener('change', checkboxStyle));
