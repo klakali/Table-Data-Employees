@@ -1,4 +1,4 @@
-# Project Name
+# Employees Sample Database
 > General Employee data in the table format
 
 ## Table of contents
