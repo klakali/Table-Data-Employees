@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>JS Exercise: Forms</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -15,10 +16,10 @@
                 <tr>
                     <th>Select</th>
                     <th>Name</th>
-                    <th>Surname</th>
+                    <th class="arrow-down">Surname</th>
                     <th>Date of Birth</th>
                     <th>Department</th>
-                    <th>Salary (month)</th>
+                    <th class="arrow-down">Salary (month)</th>
                     <th>Role</th>
                 </tr>
             </thead>
@@ -103,14 +104,30 @@
                 <input type="text" name="surname" placeholder="Surname" required>
                 <input type="text" name="department" placeholder="Department" required>
                 <input type="number" name="salary" placeholder="Salary" required>
-                <select>
+                <label for="department">Department</label>
+                <select id="department">
                     <option value="hr">HR</option>
                     <option value="technology">Technology</option>
                     <option value="management">Management</option>
                     <option value="operations">Operations</option>
                 </select>
-                <input type="date" min="2017-08-15" max="2018-08-26" name="dateOfBirth" placeholder="Date of Birth" required>
+                <label for="dateofBirt">Date of Birth</label>
+                <input type="date" min="2017-08-15" max="2018-08-26" name="dateOfBirth" placeholder="Date of Birth" id="date" required>
                 <input type="submit" value="Add" class="buttonColor buttonSize">
+            </fieldset>
+        </form>
+        
+        <form>
+            <fieldset>
+        <legend>Filter</legend>
+        <label for="department">Department</label>
+                <select id="department">
+                    <option value="hr">HR</option>
+                    <option value="technology">Technology</option>
+                    <option value="management">Management</option>
+                    <option value="operations">Operations</option>
+                </select>
+                <input type="submit" value="Apply" class="buttonColor buttonSize">
             </fieldset>
         </form>
     </div>

@@ -84,6 +84,7 @@ time,
 mark,
 audio,
 box-sizing: border-box;
+
 video {
     margin: 0;
     padding: 0;
@@ -109,23 +110,34 @@ h1 {
 }
 
 .container {
-    width: 80%;
+    width: 95%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
     align-items: center;
     margin: 0 auto;
 }
 
 table {
     margin: 1rem;
-
     text-align: left;
     line-height: 2rem;
     border-collapse: separate;
     border-spacing: 0;
     border: 2px solid #ed1c40;
     border-radius: .25rem;
+}
+
+.arrow-down:after {
+    margin: 0.3rem;
+    content: "";
+    display: inline-block;
+    vertical-align: text-top;
+    width: 0;
+    height: 0;
+    border-left: 0.4rem solid transparent;
+    border-right: 0.4rem solid transparent;
+    border-top: 0.4rem solid #fff;
 }
 
 .buttonColor,
@@ -150,13 +162,15 @@ th {
 }
 
 form {
-    padding: 1rem;
+    margin: 1rem;
+    text-align: left;
 }
+
 legend {
     text-transform: uppercase;
     font-weight: 600;
     color: #6C6C6C;
-    
+    text-align: center;
 }
 
 input[type],
@@ -164,17 +178,20 @@ select {
     margin: 0.3rem;
     padding: 0.5rem;
 }
+
 input[type="date"] {
     padding: 0.338rem;
 }
+
 .buttonSize {
     padding: 0.5rem;
     font-weight: 700;
 }
+
 .highlighted {
     background-color: #ddd;
 }
-input[type=checkbox]:checked {
-  color: #f00;
-  font-style: normal;
-} 
+
+.employessData__remove:disabled {
+    background-color: #d6cdcf;
+}

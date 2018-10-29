@@ -3,7 +3,6 @@ var removeButton = document.querySelector(".employessData__remove");
 
 //Delate data
 function deleteRow(datatable) {
-    console.log(checkboxes);
     var confirmation = confirm('Are you sure?');
     if (confirmation == true) {
         var table = document.getElementById("datatable");
@@ -22,7 +21,7 @@ function deleteRow(datatable) {
         }
     }
 }
-//Highight 
+//Highlight 
 function checkboxStyle() {
     var rowStyle = this.parentNode.parentNode;
     if (this.checked == false) {
@@ -30,8 +29,23 @@ function checkboxStyle() {
     }
     if (this.checked) {
         rowStyle.style.backgroundColor = "#ddd";
+        removeButton.disabled = false;
+
+    }
+}
+//Remove button disabled
+function countCheckboxes() {
+    var count = 0;
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked === true) {
+            count++;
+            removeButton.disabled = false;
+        }
+    }
+    if (count === 0) {
+        removeButton.disabled = true;
     }
 }
 
 removeButton.addEventListener('click', deleteRow);
-checkboxes.forEach(checkbox => checkbox.addEventListener('change', checkboxStyle));
+checkboxes.forEach(checkbox => checkbox.addEventListener('change', countCheckboxes));
