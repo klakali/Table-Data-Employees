@@ -128,6 +128,11 @@ table {
     border-radius: .25rem;
 }
 
+.surname,
+.salary {
+    cursor: pointer;
+}
+
 .arrow-down:after {
     margin: 0.3rem;
     content: "";
@@ -138,6 +143,18 @@ table {
     border-left: 0.4rem solid transparent;
     border-right: 0.4rem solid transparent;
     border-top: 0.4rem solid #fff;
+}
+
+.arrow-up:after {
+    margin: 0.3rem;
+    content: "";
+    display: inline-block;
+    vertical-align: text-bottom;
+    width: 0;
+    height: 0;
+    border-left: 0.4rem solid transparent;
+    border-right: 0.4rem solid transparent;
+    border-bottom: 0.4rem solid #fff;
 }
 
 .buttonColor,
@@ -192,6 +209,7 @@ input[type="date"] {
     background-color: #ddd;
 }
 
-.employessData__remove:disabled {
+.employessData__remove:disabled,
+.resetButton:disabled {
     background-color: #d6cdcf;
 }

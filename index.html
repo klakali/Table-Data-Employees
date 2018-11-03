@@ -15,118 +15,129 @@
                 <tr>
                     <th>Select</th>
                     <th>Name</th>
-                    <th class="arrow-down">Surname</th>
+                    <th class="arrow-down surname">Surname</th>
                     <th>Date of Birth</th>
                     <th>Department</th>
-                    <th class="arrow-down">Salary (month)</th>
+                    <th class="arrow-down salary">Salary (month)</th>
                     <th>Role</th>
                 </tr>
             </thead>
-            <tr>
-                <td><input type="checkbox" name="toBeRemoved" id="input"></td>
-                <td>Alicja</td>
-                <td>Malinowska</td>
-                <td>1983</td>
-                <td>Technology</td>
-                <td>9562</td>
-                <td>Senior Front-End</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="toBeRemoved"></td>
-                <td>Mariusz</td>
-                <td>Kowalski</td>
-                <td>1995</td>
-                <td>HR</td>
-                <td>5899</td>
-                <td>Senior Recruiter</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="toBeRemoved"></td>
-                <td>Daria</td>
-                <td>Lisewska</td>
-                <td>1989</td>
-                <td>HR</td>
-                <td>2622</td>
-                <td>Junior IT Sourcer</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="toBeRemoved"></td>
-                <td>Adam</td>
-                <td>Kowalski</td>
-                <td>1993</td>
-                <td>Technology</td>
-                <td>15202</td>
-                <td>Java Developer</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="toBeRemoved"></td>
-                <td>Andrzej</td>
-                <td>Dąbrowski</td>
-                <td>1889</td>
-                <td>HR</td>
-                <td>6660</td>
-                <td>Senior IT Sourcer</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="toBeRemoved"></td>
-                <td>Lucyna</td>
-                <td>Kowalewska</td>
-                <td>1995</td>
-                <td>HR</td>
-                <td>2522</td>
-                <td>Junior IT Sourcer</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="toBeRemoved"></td>
-                <td>Karolina</td>
-                <td>Smalowska</td>
-                <td>1986</td>
-                <td>Management</td>
-                <td>6985</td>
-                <td>Team Leader</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="toBeRemoved"></td>
-                <td>Lucyna</td>
-                <td>Kitkowska</td>
-                <td>1990</td>
-                <td>Management</td>
-                <td>6985</td>
-                <td>Team Leader</td>
-            </tr>
+            <tbody>
+                <tr class="singleRow">
+                    <td><input type="checkbox" name="toBeRemoved" id="input"></td>
+                    <td>Alicja</td>
+                    <td>Malinowska</td>
+                    <td>1983-01-01</td>
+                    <td>Technology</td>
+                    <td>9562</td>
+                    <td>Senior Front-End</td>
+                </tr>
+                <tr class="singleRow">
+                    <td><input type="checkbox" name="toBeRemoved"></td>
+                    <td>Mariusz</td>
+                    <td>Kowalski</td>
+                    <td>1995-01-01</td>
+                    <td>HR</td>
+                    <td>5899</td>
+                    <td>Senior Recruiter</td>
+                </tr>
+                <tr class="singleRow">
+                    <td><input type="checkbox" name="toBeRemoved"></td>
+                    <td>Daria</td>
+                    <td>Lisewska</td>
+                    <td>1989-01-01</td>
+                    <td>HR</td>
+                    <td>2622</td>
+                    <td>Junior IT Sourcer</td>
+                </tr>
+                <tr class="singleRow">
+                    <td><input type="checkbox" name="toBeRemoved"></td>
+                    <td>Adam</td>
+                    <td>Kowalski</td>
+                    <td>1993-01-01</td>
+                    <td>Technology</td>
+                    <td>15202</td>
+                    <td>Java Developer</td>
+                </tr>
+                <tr class="singleRow">
+                    <td><input type="checkbox" name="toBeRemoved"></td>
+                    <td>Andrzej</td>
+                    <td>Dąbrowski</td>
+                    <td>1989-01-01</td>
+                    <td>HR</td>
+                    <td>6660</td>
+                    <td>Senior IT Sourcer</td>
+                </tr>
+                <tr class="singleRow">
+                    <td><input type="checkbox" name="toBeRemoved"></td>
+                    <td>Lucyna</td>
+                    <td>Kowalewska</td>
+                    <td>1995-01-01</td>
+                    <td>HR</td>
+                    <td>2522</td>
+                    <td>Junior IT Sourcer</td>
+                </tr>
+                <tr class="singleRow">
+                    <td><input type="checkbox" name="toBeRemoved"></td>
+                    <td>Karolina</td>
+                    <td>Smalowska</td>
+                    <td>1986-01-01</td>
+                    <td>Management</td>
+                    <td>6985</td>
+                    <td>Team Leader</td>
+                </tr>
+                <tr class="singleRow">
+                    <td><input type="checkbox" name="toBeRemoved"></td>
+                    <td>Lucyna</td>
+                    <td>Kitkowska</td>
+                    <td>1990-01-01</td>
+                    <td>Management</td>
+                    <td>6985</td>
+                    <td>Team Leader</td>
+                </tr>
+            </tbody>
         </table>
         <input type="button" value="Remove" class="employessData__remove buttonColor buttonSize">
-        <form>
+        <form class="addEmployeeForm" id="myForm">
             <fieldset>
                 <legend>Add an employee</legend>
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="text" name="surname" placeholder="Surname" required>
-                <input type="text" name="department" placeholder="Department" required>
-                <input type="number" name="salary" placeholder="Salary" required>
-                <label for="department">Department</label>
-                <select id="department">
-                    <option value="hr">HR</option>
-                    <option value="technology">Technology</option>
-                    <option value="management">Management</option>
-                    <option value="operations">Operations</option>
-                </select>
+                <input type="text" name="name" placeholder="Name" class="addToTheTable" required>
+                <input type="text" name="surname" placeholder="Surname" class="addToTheTable" required>
                 <label for="dateofBirt">Date of Birth</label>
                 <input type="date" min="2017-08-15" max="2018-08-26" name="dateOfBirth" placeholder="Date of Birth" id="date" required>
-                <input type="submit" value="Add" class="buttonColor buttonSize">
+                <label for="department">Department</label>
+                <select class="department">
+                    <option value="HR">HR</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Management">Management</option>
+                    <option value="Operations">Operations</option>
+                </select>
+                <input type="number" name="salary" placeholder="Salary" required>
+                <label for="role">Role</label>
+                <select id="role">
+                    <option value="Team Leader">Team Leader</option>
+                    <option value="Tester">Tester</option>
+                    <option value="Senior Front End">Senior Front End</option>
+                    <option value="Junior Front End">Junior Front End</option>
+                    <option value="junior IT Sourcer">Junior IT Sourcer</option>
+                </select>
+
+                <input type="submit" value="Add" class="buttonColor buttonSize addEmployee">
             </fieldset>
         </form>
-        
+
         <form>
             <fieldset>
-        <legend>Filter</legend>
-        <label for="department">Department</label>
-                <select id="department">
-                    <option value="hr">HR</option>
-                    <option value="technology">Technology</option>
-                    <option value="management">Management</option>
-                    <option value="operations">Operations</option>
+                <legend>Filter</legend>
+                <label for="department">Department</label>
+                <select class="department" id="departmentSelection">
+                    <option value="HR">HR</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Management">Management</option>
+                    <option value="Operations">Operations</option>
                 </select>
-                <input type="submit" value="Apply" class="buttonColor buttonSize">
+                <input type="submit" value="Apply" class="buttonColor buttonSize applyFilterButton">
+                <input type="submit" value="Reset" class="buttonColor buttonSize resetButton">
             </fieldset>
         </form>
     </div>
