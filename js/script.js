@@ -1,29 +1,31 @@
-var people = [];
+var people = []; // the visible data in the table
 
 //MODUL: ADD AN EMPLOYEE
-var add = document.querySelector("input[type=submit]");
+const add = document.querySelector("input[type=submit]");
 
 function addEmployee(e) {
     e.stopPropagation();
     e.preventDefault();
-    var row = table.insertRow(-1);
-    row.classList.add("singleRow");
 
+    const employeeForm = document.querySelector(".addEmployeeForm");
+
+    let row = table.insertRow(-1);
+    row.classList.add("singleRow");
     singleRowArray.push(row);
-    var addCell = row.insertCell(-1);
+    let addCell = row.insertCell(-1);
 
     addCell.innerHTML = '<input type="checkbox" name="toBeRemoved">'
     addCell.addEventListener('change', countCheckboxes);
     addCell.addEventListener('change', checkboxStyle);
 
-    var employeeFormArray = [""]; // "" added because below 'for funtion' start from 1
+    let employeeFormArray = [""]; // "" added because below 'for' function starts from 1
 
-    var columnCount = table.rows[0].cells.length;
+    let columnCount = table.rows[0].cells.length;
 
     for (let i = 1; i < columnCount; i++) {
-        let employeeForm = document.querySelector(".addEmployeeForm").elements[i].value;
-        employeeFormArray.push(employeeForm); //form values add to the array
-        var addCell = row.insertCell(-1);
+        let employeeFormValues = document.querySelector(".addEmployeeForm").elements[i].value;
+        employeeFormArray.push(employeeFormValues); //form values add to the array
+        let addCell = row.insertCell(-1);
         addCell.textContent = employeeFormArray[i];
 
     }
@@ -39,20 +41,23 @@ function addEmployee(e) {
         node: singleRowArray[j] //node to each row
 
     }
-    people.push(object); //new employee added to "people" - for 'sort function' 
+    people.push(object); //new employee added to "people" - for 'sort' function
+
+    employeeForm.reset(); // Reset form
+    return false;
 }
 
 add.addEventListener("click", addEmployee);
 
 //MODUL: Surname Sort
-let singleRowArray = Array.from(document.querySelectorAll(".singleRow"));
-var table = document.getElementById("datatable");
-var surname = document.querySelector(".surname");
+const singleRowArray = Array.from(document.querySelectorAll(".singleRow"));
+const table = document.getElementById("datatable");
+const surname = document.querySelector(".surname");
 var surnamesAZ = false; //used on the sort event
+var singleRow = document.querySelectorAll(".singleRow");
 
 function peopleToObject() {
     let singleRowArray = Array.from(document.querySelectorAll(".singleRow")); //created to find the children
-    let singleRow = document.querySelectorAll(".singleRow");
     for (let i = 0; i < singleRowArray.length; i++) {
         let object = {
             name: singleRowArray[i].children[1].textContent,
@@ -120,9 +125,8 @@ surname.addEventListener('click', function () {
 //END --> MODUL: Surname Sort
 
 //MODUL: Salary sort
-var salary = document.querySelector(".salary");
+const salary = document.querySelector(".salary");
 var salaryAZ = false;
-
 
 function sortSalaryAZ() {
     //compare salaries in the objects
@@ -177,9 +181,9 @@ salary.addEventListener('click', function () {
 })
 
 //MODUL: REMOVE rows from the table
-var checkbox = document.querySelector("input[name=toBeRemoved]");
-var checkboxes = document.querySelectorAll("input[name=toBeRemoved]");
-var removeButton = document.querySelector(".employessData__remove");
+const checkbox = document.querySelector("input[name=toBeRemoved]");
+const checkboxes = document.querySelectorAll("input[name=toBeRemoved]");
+const removeButton = document.querySelector(".employessData__remove");
 removeButton.disabled = true;
 
 //Highlight 
@@ -213,11 +217,10 @@ function deleteRow(datatable) {
     if (confirmation == true) {
         var table = document.getElementById("datatable");
         var rowCount = table.rows.length;
-        // var i=1 to start after header
+        // i=1 after header
         for (let i = 1; i < rowCount; i++) {
             var row = table.rows[i];
-            // index of td contain checkbox is 8
-            var chkbox = row.cells[0].getElementsByTagName('input')[0];
+            var chkbox = row.cells[0].getElementsByTagName('input')[0]; // index of the checbox cell
             if (chkbox.checked == true && chkbox != null) {
                 table.deleteRow(i);
                 rowCount--;
@@ -235,32 +238,44 @@ checkboxes.forEach(checkbox => checkbox.addEventListener('click', countCheckboxe
 checkboxes.forEach(checkbox => checkbox.addEventListener('click', checkboxStyle));
 
 //Filter modul
-//var buttonFilterReset = document.querySelector(".resetButton");
 var buttonFilterDepartment = document.querySelector(".applyFilterButton")
-//buttonFilterReset.disabled = true;
-var filterPoeple = [];
+const filterPoeple = [];
+var buttonFilterActive = true;
 
 function filterDepartment(e) {
-    e.stopPropagation();
+    //e.stopPropagation();
     e.preventDefault();
+    var singleRow = document.querySelectorAll(".singleRow"); //local let - to include also added employees
     var departmentSelection = document.getElementById("departmentSelection");
     var departmentOption = departmentSelection.options[departmentSelection.selectedIndex].value;
+    var rowCount = table.rows.length - 1;
+    buttonFilterDepartment.value = 'Reset';
+
+    add.disabled = true;
     
-for (let i = 0; i < people.length; i++) {
-    if (people[i].department === departmentOption ) {
-        filterPoeple.push(people[i]);
+    if (buttonFilterActive === true) {
+        for (let i = 0; i < people.length; i++) {
+            if (people[i].department != departmentOption) {
+                singleRow[i].className += ' hidden';
+                buttonFilterActive = false;
+                departmentSelection.disabled = true;
+
+            }
+        }
+        return;
     }
 
-for (let i = 0; i < columnCount; i++) {
-    table.appendChild(people[i].node)
-}
+    if (buttonFilterActive === false) {
+        for (let i = 0; i < people.length; i++) {
+            singleRow[i].className = 'singleRow';
+            add.disabled = false;
+            buttonFilterActive = true;
+            buttonFilterDepartment.value = 'Apply';
+            departmentSelection.disabled = false;
+        }
+        return;
+    }
 
-
-}
-      
-console.log(people[0].department)
-console.log(filterPoeple)
 
 }
 buttonFilterDepartment.addEventListener("click", filterDepartment)
-//buttonFilterReset.addEventListener("click", resetFilterDepartment)

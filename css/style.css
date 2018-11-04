@@ -210,6 +210,13 @@ input[type="date"] {
 }
 
 .employessData__remove:disabled,
-.resetButton:disabled {
+.resetButton:disabled, 
+.addEmployee:disabled {
     background-color: #d6cdcf;
+}
+.hidden {
+    display: none;
+}
+.visible {
+    visibility: visible;
 }
