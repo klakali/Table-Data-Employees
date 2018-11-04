@@ -249,30 +249,28 @@ function filterDepartment(e) {
     var departmentSelection = document.getElementById("departmentSelection");
     var departmentOption = departmentSelection.options[departmentSelection.selectedIndex].value;
     var rowCount = table.rows.length - 1;
-    buttonFilterDepartment.value = 'Reset';
-    add.disabled = true;
 
     if (people.length === 0) {
         add.disabled = false;
         alert("No data")
+        buttonFilterActive = false;
         return;
     }
-
-    add.disabled = true;
     
-    if (buttonFilterActive === true) {
+    if (buttonFilterActive === true && people.length > 0) {
         for (let i = 0; i < people.length; i++) {
             if (people[i].department != departmentOption) {
                 singleRow[i].className += ' hidden';
                 buttonFilterActive = false;
                 departmentSelection.disabled = true;
-
+                buttonFilterDepartment.value = 'Reset';
+                    add.disabled = true;
             }
         }
         return;
     }
 
-    if (buttonFilterActive === false) {
+    if (buttonFilterActive === false && people.length > 0) {
         for (let i = 0; i < people.length; i++) {
             singleRow[i].className = 'singleRow';
             add.disabled = false;
