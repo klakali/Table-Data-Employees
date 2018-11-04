@@ -252,14 +252,19 @@ function filterDepartment(e) {
     buttonFilterDepartment.value = 'Reset';
 
     add.disabled = true;
-    
+
+    if (people.length === 0) {
+        add.disabled = false;
+        alert("No data")
+        return;
+    }
+
     if (buttonFilterActive === true) {
         for (let i = 0; i < people.length; i++) {
             if (people[i].department != departmentOption) {
-                singleRow[i].className += ' hidden';
                 buttonFilterActive = false;
                 departmentSelection.disabled = true;
-
+                singleRow[i].className += ' hidden';
             }
         }
         return;
@@ -275,7 +280,6 @@ function filterDepartment(e) {
         }
         return;
     }
-
-
 }
 buttonFilterDepartment.addEventListener("click", filterDepartment)
+console.log(people)
