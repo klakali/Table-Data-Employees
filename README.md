@@ -22,13 +22,13 @@ I created this project to practice the few JavaScript methods: sort, filter and 
 * Vanilla JavaScript
 
 ## Features
-List of features ready and TODOs for future development
 * Removing employee's data (or employess' data - in a bulk) 
+* Adding single employee to the list
+* Sort (by salary and surname)
 
 To-do list:
-* Adding employee's data
 * Editing employee's data --> TO BE DONE
-* Employee's data can be sort (AZ, ZA: urname, salary), filter (by "Department", "Role") --> TO BE DONE
+* filter (by "Department", "Role") --> TO BE DONE
 
 ## Status
 Project is: _in progress_
