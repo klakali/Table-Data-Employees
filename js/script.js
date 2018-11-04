@@ -243,14 +243,13 @@ const filterPoeple = [];
 var buttonFilterActive = true;
 
 function filterDepartment(e) {
-    //e.stopPropagation();
+    e.stopPropagation();
     e.preventDefault();
     var singleRow = document.querySelectorAll(".singleRow"); //local let - to include also added employees
     var departmentSelection = document.getElementById("departmentSelection");
     var departmentOption = departmentSelection.options[departmentSelection.selectedIndex].value;
     var rowCount = table.rows.length - 1;
     buttonFilterDepartment.value = 'Reset';
-
     add.disabled = true;
 
     if (people.length === 0) {
@@ -259,12 +258,15 @@ function filterDepartment(e) {
         return;
     }
 
+    add.disabled = true;
+    
     if (buttonFilterActive === true) {
         for (let i = 0; i < people.length; i++) {
             if (people[i].department != departmentOption) {
+                singleRow[i].className += ' hidden';
                 buttonFilterActive = false;
                 departmentSelection.disabled = true;
-                singleRow[i].className += ' hidden';
+
             }
         }
         return;
@@ -282,4 +284,3 @@ function filterDepartment(e) {
     }
 }
 buttonFilterDepartment.addEventListener("click", filterDepartment)
-console.log(people)
