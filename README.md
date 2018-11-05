@@ -10,7 +10,7 @@
 * [Contact](#contact)
 
 ## General info
-I created this project to practice the few JavaScript methods: sort, filter and reduce.
+I created this project to practice the few JavaScript methods: sort, filter and table modifications.
 
 ## Technologies
 * HTML5
